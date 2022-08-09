@@ -11,7 +11,6 @@ int dp(int n) {
 
 int main(void) {
     int T;
-
     scanf("%d", &T);
 
     while (T--) {
