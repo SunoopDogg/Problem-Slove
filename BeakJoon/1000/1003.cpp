@@ -18,6 +18,7 @@ int main(void) {
         int N;
 
         scanf("%d", &N);
+
         if (N == 0)
             printf("1 0\n");
         else if (N == 1)
