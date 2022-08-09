@@ -1,23 +1,12 @@
 #include <stdio.h>
 
-int arr[41][2] = {{1, 0}, {0, 1}};
+int arr[41] = {0, 1};
 
-int get_0(int N) {
-    if (N == 0)
-        return 1;
-    else if (N == 1)
-        return 0;
-    if (!arr[N][0]) arr[N][0] = get_0(N - 1) + get_0(N - 2);
-    return arr[N][0];
-}
-
-int get_1(int N) {
-    if (N == 0)
-        return 0;
-    else if (N == 1)
-        return 1;
-    if (!arr[N][1]) arr[N][1] = get_1(N - 1) + get_1(N - 2);
-    return arr[N][1];
+int dp(int n) {
+    if (n == 0) return 0;
+    if (n == 1) return 1;
+    if (arr[n]) return arr[n];
+    return arr[n] = dp(n - 1) + dp(n - 2);
 }
 
 int main(void) {
@@ -29,10 +18,12 @@ int main(void) {
         int N;
 
         scanf("%d", &N);
-
-        arr[N][0] = get_0(N);
-        arr[N][1] = get_1(N);
-        printf("%d %d\n", arr[N][0], arr[N][1]);
+        if (N == 0)
+            printf("1 0\n");
+        else if (N == 1)
+            printf("0 1\n");
+        else
+            printf("%d %d\n", dp(N - 1), dp(N));
     }
 
     return 0;
