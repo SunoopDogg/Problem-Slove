@@ -9,6 +9,7 @@ int main(void) {
 
     for (int i = 0; i < N; i++) {
         char temp;
+
         scanf("%c", &temp);
         result += temp - '0';
     }
