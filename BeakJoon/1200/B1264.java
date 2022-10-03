@@ -25,5 +25,7 @@ public class B1264 {
             }
             System.out.println(cnt);
         }
+
+        sc.close();
     }
 }
