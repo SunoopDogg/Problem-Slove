@@ -3,6 +3,7 @@ package Programmers;
 class Solution {
     public int solution(String s) {
         String shortCompression = s;
+
         for (int i = 1; i <= s.length(); i++) {
             String target;
             int targetCount;
