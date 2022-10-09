@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 char** solution(int** line, size_t line_rows, size_t line_cols) {
-    long crossPoint[line_rows * (line_rows - 1) / 2][2];  // [x, y]
+    long crossPoint[line_rows * (line_rows - 1) / 2][2];
     long crossCnt = 0;
     long minX, maxX, minY, maxY;
 
