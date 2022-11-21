@@ -10,7 +10,6 @@ class Solution {
             String compression = "";
 
             for (int j = 0; j < s.length(); j += i) {
-
                 target = GetTargetString(s, j, i);
                 if (target == null) {
                     compression += s.substring(j, s.length());
