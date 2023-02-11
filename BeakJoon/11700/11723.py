@@ -4,23 +4,24 @@ M = int(sys.stdin.readline())
 S = set()
 
 for _ in range(M):
-    command = sys.stdin.readline().split()
+    temp = sys.stdin.readline().split()
 
-    if command[0] == 'add':
-        S.add(command[1])
-    elif command[0] == 'remove':
-        S.discard(command[1])
-    elif command[0] == 'check':
-        if command[1] in S:
-            print(1)
-        else:
-            print(0)
-    elif command[0] == 'toggle':
-        if command[1] in S:
-            S.discard(command[1])
-        else:
-            S.add(command[1])
-    elif command[0] == 'all':
-        S = set([str(i) for i in range(1, 21)])
-    elif command[0] == 'empty':
-        S = set()
+    if len(temp) == 1:
+        if temp[0] == 'all':
+            S = set([i for i in range(1, 21)])
+        elif temp[0] == 'empty':
+            S = set()
+    else:
+        command, num = temp[0], int(temp[1])
+
+        if command == 'add':
+            S.add(num)
+        elif command == 'remove':
+            S.discard(num)
+        elif command == 'check':
+            print(1 if num in S else 0)
+        elif command == 'toggle':
+            if num in S:
+                S.discard(num)
+            else:
+                S.add(num)
