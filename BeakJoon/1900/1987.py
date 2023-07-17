@@ -1,25 +1,24 @@
 import sys
+from collections import deque
 input = sys.stdin.readline
 
 R, C = map(int, input().split())
 board = [list(input().rstrip()) for _ in range(R)]
+
+answer = 0
 visited = set()
-dx = [0, 0, 1, -1]
-dy = [1, -1, 0, 0]
-ans = 0
 
+visited.add((0, 0, board[0][0]))
+q = deque([(0, 0, board[0][0], 1)])
 
-def dfs(x, y, cnt):
-    global ans
-    ans = max(ans, cnt)
-    for i in range(4):
-        nx, ny = x + dx[i], y + dy[i]
-        if 0 <= nx < R and 0 <= ny < C and board[nx][ny] not in visited:
-            visited.add(board[nx][ny])
-            dfs(nx, ny, cnt + 1)
-            visited.remove(board[nx][ny])
+while q:
+    r, c, path, cnt = q.popleft()
+    answer = max(answer, cnt)
+    for dr, dc in [(0, 1), (0, -1), (1, 0), (-1, 0)]:
+        nr, nc = r + dr, c + dc
+        if 0 <= nr < R and 0 <= nc < C and board[nr][nc] not in path:
+            if (nr, nc, path + board[nr][nc]) not in visited:
+                visited.add((nr, nc, path + board[nr][nc]))
+                q.append((nr, nc, path + board[nr][nc], cnt + 1))
 
-
-visited.add(board[0][0])
-dfs(0, 0, 1)
-print(ans)
+print(answer)
