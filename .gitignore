@@ -19,3 +19,6 @@
 .ionide
 
 /Python/
+
+# System Files
+.DS_Store
