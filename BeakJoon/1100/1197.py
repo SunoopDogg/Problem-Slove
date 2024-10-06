@@ -1,5 +1,5 @@
-
 import sys
+sys.setrecursionlimit(10**6)
 
 V, E = map(int, sys.stdin.readline().split())
 graph = [[] for _ in range(V)]
